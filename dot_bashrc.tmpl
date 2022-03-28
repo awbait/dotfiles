@@ -11,4 +11,48 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Distribution
+LFILE="/etc/*-release"
+MFILE="/System/Library/CoreServices/SystemVersion.plist"
+
+if ls $LFILE 1> /dev/null 2>&1; then
+  DISTRO="$(awk -F'=' '/^ID=/ {print tolower($2)}' /etc/*-release 2> /dev/null)"
+elif [[ -f $MFILE ]]; then
+  DISTRO="macos"
+fi
+
+# Setup Icon for distribution
+case $DISTRO in
+    *kali*)                  ICON="ﴣ";;
+    *arch*)                  ICON="";;
+    *debian*)                ICON="";;
+    *raspbian*)              ICON="";;
+    *ubuntu*)                ICON="";;
+    *elementary*)            ICON="";;
+    *fedora*)                ICON="";;
+    *coreos*)                ICON="";;
+    *gentoo*)                ICON="";;
+    *mageia*)                ICON="";;
+    *centos*)                ICON="";;
+    *opensuse*|*tumbleweed*) ICON="";;
+    *sabayon*)               ICON="";;
+    *slackware*)             ICON="";;
+    *linuxmint*)             ICON="";;
+    *alpine*)                ICON="";;
+    *aosc*)                  ICON="";;
+    *nixos*)                 ICON="";;
+    *devuan*)                ICON="";;
+    *manjaro*)               ICON="";;
+    *rhel*)                  ICON="";;
+    *macos*)                 ICON="";;
+    *)                       ICON="";;
+esac
+
+# Env var for starship
+export STARSHIP_DISTRO="$ICON"
+
+# Load direnv
+eval "$(direnv hook bash)"
+
+# Load starship
 eval "$(starship init bash)"
