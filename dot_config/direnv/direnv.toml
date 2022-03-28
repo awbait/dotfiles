@@ -1,4 +1,4 @@
 [whitelist]
 # prefix = [ "/home/user/code/project-a" ]
 # exact = [ "/home/user/project-b/.envrc", "/home/user/project-b/subdir-a" ]
-exact = [ "/root/mydir/.envrc" ]
+exact = ["/root/mydir/.envrc"]

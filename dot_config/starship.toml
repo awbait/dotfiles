@@ -14,7 +14,7 @@ error_symbol = "[](238)"
 
 # Distribution
 [env_var.STARSHIP_DISTRO]
-format = "[$env_value](bold white)  "
+format = "[$env_value](bold white) "
 variable = "STARSHIP_DISTRO"
 disabled = false
 
@@ -45,4 +45,3 @@ format = "at [$path]($style)[$read_only]($read_only_style) "
 format = 'on [ $context\($namespace\)](bold purple) '
 # 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
 disabled = true
-
